@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductStoreRequest;
+use App\Http\Requests\ProductUpdateRequest;
 
 class ProductsController extends Controller
 {
@@ -20,9 +22,11 @@ class ProductsController extends Controller
     {
         return view('products.create');
     }
-    
-    public function store(Request $request)
+
+
+    public function store(ProductStoreRequest $request)
     {
+       
         $product = Product::create([
             'name' => $request->post('name'),
             'stocks' => $request->post('stocks')
@@ -40,7 +44,7 @@ class ProductsController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(ProductUpdateRequest $request, $id)
     {
         $product = Product::findOrFail($id);
 

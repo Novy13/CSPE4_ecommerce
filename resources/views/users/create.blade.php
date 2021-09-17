@@ -7,7 +7,7 @@
 
 <ul>
     @foreach($errors->all() as $message)
-    <li>{{ $message }}</li>
+    <li><strong>{{ $message }}</strong></li>
     @endforeach
 </ul>
 
